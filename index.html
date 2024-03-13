@@ -168,14 +168,24 @@ button:hover {
   
 //const menuData = ; // Asegúrate de que 'menuData' contenga la estructura de datos correspondiente
 
-// Utiliza la API de Fetch para cargar el archivo JSON
-fetch('menu.json')
-  .then(response => response.json())
-  .then(data => {
-    const menuData = data; // Asigna los datos cargados a 'menuData'
-    console.log(menuData); // Muestra 'menuData' para verificar
-  })
-  .catch(error => console.error('Error al cargar el archivo JSON:', error));
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('menu.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      const menuData = data;
+      console.log(menuData);
+      // Aquí puedes continuar con tu lógica de manipulación de datos
+    })
+    .catch(error => {
+      console.error('Error al cargar el archivo JSON:', error);
+    });
+});
+
 
   
 let seleccion = {};
