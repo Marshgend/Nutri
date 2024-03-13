@@ -1,11 +1,304 @@
-fetch('menu.json')
-  .then(response => response.json())
-  .then(data => {
-    const menuData = data;
-    menu.json
-  })
-  .catch(error => console.error('Error al cargar el JSON:', error));
-
+const menuData = [
+    {
+        "categoria": "Desayuno",
+        "platillos": [
+            {
+                "nombre": "Platillo 1",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 1",
+                        "cantidad": 7.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 2",
+                        "cantidad": 8.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 3",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Platillo 2",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 4",
+                        "cantidad": 4.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 5",
+                        "cantidad": 2.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 6",
+                        "cantidad": 4.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Platillo 3",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 7",
+                        "cantidad": 9.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 8",
+                        "cantidad": 1.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 9",
+                        "cantidad": 1.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Platillo 4",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 10",
+                        "cantidad": 3.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 11",
+                        "cantidad": 2.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Comida",
+        "platillos": [
+            {
+                "nombre": "Platillo 5",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 12",
+                        "cantidad": 7.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 13",
+                        "cantidad": 5.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 14",
+                        "cantidad": 9.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 15",
+                        "cantidad": 7.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 16",
+                        "cantidad": 1.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Platillo 6",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 17",
+                        "cantidad": 8.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 18",
+                        "cantidad": 6.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Platillo 7",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 19",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 20",
+                        "cantidad": 2.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Platillo 8",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 21",
+                        "cantidad": 3.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 22",
+                        "cantidad": 4.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 23",
+                        "cantidad": 1.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Cena",
+        "platillos": [
+            {
+                "nombre": "Platillo 9",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 24",
+                        "cantidad": 7.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 25",
+                        "cantidad": 6.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 26",
+                        "cantidad": 4.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 27",
+                        "cantidad": 6.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 28",
+                        "cantidad": 6.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Platillo 10",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Ingrediente 29",
+                        "cantidad": 6.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 30",
+                        "cantidad": 2.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 31",
+                        "cantidad": 3.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Ingrediente 32",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            }
+        ]
+    }
+];
 
 let seleccion = {};
 let diasPorMenu = {};
