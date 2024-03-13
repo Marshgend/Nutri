@@ -2,7 +2,7 @@ fetch('menu.json')
   .then(response => response.json())
   .then(data => {
     const menuData = data;
-    // Aquí puedes usar 'menuData'
+    menu.json
   })
   .catch(error => console.error('Error al cargar el JSON:', error));
 
