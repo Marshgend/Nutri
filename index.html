@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style id="preview-style">
+      body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    text-align: center;
+    padding: 20px;
+    max-width: 960px;
+    margin: 20px auto;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* Estilos para el menú desplegable y botones */
+select {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #4CAF50;
+    font-size: 16px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    width: 60%;
+}
+
+button {
+    padding: 12px 25px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Estilos para el resumen de menú y lista de compras */
+.contenedor-resumen, .lista-de-compras {
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.tarjeta-categoria, .lista-de-compras li {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    border-left: 3px solid #4CAF50;
+    list-style-type: none; /* Elimina bullet points */
+}
+
+.espacio-entre-platillos {
+    margin-top: 35px; /* Añade un espacio adicional entre platillos */
+}
+
+.platillo strong + ul {
+    margin-top: 10px; /* Espacio entre el título del platillo y la lista de ingredientes */
+}
+
+.tarjeta-categoria h3 {
+    color: #4CAF50;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.tarjeta-categoria ul {
+    list-style-type: none; /* Quitamos los bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.tarjeta-categoria li {
+    border-bottom: 1px solid #e0e0e0; /* Línea para separar los ingredientes */
+    padding-bottom: 8px; /* Espacio debajo de cada ingrediente */
+    margin-bottom: 8px; /* Espacio entre ingredientes */
+}
+
+.tarjeta-categoria li:last-child {
+    border-bottom: none; /* El último ingrediente no tiene borde inferior */
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* Estilos para elementos de la lista de la compra */
+.lista-de-compras li {
+    border-bottom: 1px solid #e0e0e0; /* Línea para separar los ítems */
+    padding-bottom: 8px; /* Espacio debajo de cada ítem */
+    margin-bottom: 8px; /* Espacio entre ítems */
+}
+
+.lista-de-compras li:last-child {
+    border-bottom: none; /* El último ítem no tiene borde inferior */
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* Ajustes de responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    select, button {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+    .contenedor-resumen, .lista-de-compras {
+        box-shadow: none; /* Sombras desactivadas para móviles */
+    }
+}
+    </style>
+    
+  </head>
+  <body>
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+  <body>
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+  </head>
+  <body>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Nutricional</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Elige tu Menú Nutricional</h1>
+        <div id="menu-container"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+  </body>
+</html>
+  </body>
+</html>
+    <script type="module">
+    const menuData = [
+    {
+        "categoria": "Desayuno",
+        "platillos": [
+            {
+                "nombre": "Licuado de Mango y Espinaca",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Mango",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.67,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Espinacas",
+                        "cantidad": 60.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Vainilla",
+                        "cantidad": 2.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Leche",
+                        "cantidad": 120.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Agua de Limón",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Agua",
+                        "cantidad": 300.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Limón",
+                        "cantidad": 20.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Desayuno",
+        "platillos": [
+            {
+                "nombre": "Torta de Huevo a la Mexicana",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Pan",
+                        "cantidad": 60.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "pieza"
+                    },
+                    {
+                        "ingrediente": "Huevo",
+                        "cantidad": 50.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "pieza"
+                    },
+                    {
+                        "ingrediente": "Aceite",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharadita"
+                    },
+                    {
+                        "ingrediente": "Jitomate",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Jalapeño",
+                        "cantidad": 38.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Cebolla",
+                        "cantidad": 27.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Claras",
+                        "cantidad": 198.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 6.0,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Frijoles",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Frijoles",
+                        "cantidad": 67.5,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.33,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Yogurt",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Yogurt",
+                        "cantidad": 220.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "botella"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Comida",
+        "platillos": [
+            {
+                "nombre": "Agua de Limón con Chía",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Agua",
+                        "cantidad": 300.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Limón",
+                        "cantidad": 20.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Chía",
+                        "cantidad": 5.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharaditas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Filete de Pescado con Verduras",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Pescado",
+                        "cantidad": 80.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Calabaza",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Zanahoria",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Salsa de soya",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": "cucharaditas"
+                    },
+                    {
+                        "ingrediente": "Limón",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Ajo",
+                        "cantidad": 1.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.33,
+                        "unidad_alternativa": "cucharaditas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Espagueti con Champiñones",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Pasta",
+                        "cantidad": 94.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.67,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Champiñones",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.33,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Parmesano",
+                        "cantidad": 15.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.75,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Crema",
+                        "cantidad": 13.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharadas"
+                    },
+                    {
+                        "ingrediente": "Mantequilla",
+                        "cantidad": 3.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Cilantro",
+                        "cantidad": 2.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Pimienta",
+                        "cantidad": 1.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.2,
+                        "unidad_alternativa": "cucharaditas"
+                    },
+                    {
+                        "ingrediente": "Pollo",
+                        "cantidad": 60.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Brócoli",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Sandía con Jícama",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Sandía",
+                        "cantidad": 160.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Jícama",
+                        "cantidad": 40.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Cacahuates",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Cacahuates",
+                        "cantidad": 12.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 12.0,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Cena",
+        "platillos": [
+            {
+                "nombre": "Tostadas de Surimi",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Surimi",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Lechuga",
+                        "cantidad": 68.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.5,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Pepino",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.67,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Crema",
+                        "cantidad": 13.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharadas"
+                    },
+                    {
+                        "ingrediente": "Elote",
+                        "cantidad": 83.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Salmas",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Salmas",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Desayuno",
+        "platillos": [
+            {
+                "nombre": "Pan Tostado con Cottage y Mango",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Pan",
+                        "cantidad": 25.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Cottage",
+                        "cantidad": 60.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "unidades"
+                    },
+                    {
+                        "ingrediente": "Mango",
+                        "cantidad": 90.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Omelette a la Mexicana con Queso Oaxaca",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Claras",
+                        "cantidad": 198.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 6.0,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Huevo",
+                        "cantidad": 50.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "pieza"
+                    },
+                    {
+                        "ingrediente": "Jamón",
+                        "cantidad": 42.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Oaxaca",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.67,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Jitomate",
+                        "cantidad": 10.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "rebanada"
+                    },
+                    {
+                        "ingrediente": "Cebolla",
+                        "cantidad": 5.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharadas"
+                    },
+                    {
+                        "ingrediente": "Aceite",
+                        "cantidad": 2.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Cilantro",
+                        "cantidad": 1.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.0,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Melón",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Melón",
+                        "cantidad": 179.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.33,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Pollo a la Plancha",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Pollo",
+                        "cantidad": 120.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Aceite",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharaditas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Bowl de Lentejas y Verduras",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Lentejas",
+                        "cantidad": 180.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Arroz",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Calabaza",
+                        "cantidad": 55.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Brócoli",
+                        "cantidad": 46.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Zanahoria",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Mango",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Mango",
+                        "cantidad": 90.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Cena",
+        "platillos": [
+            {
+                "nombre": "Cereal con Plátano",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Plátano",
+                        "cantidad": 60.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Leche",
+                        "cantidad": 125.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Cereal",
+                        "cantidad": 34.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Leche",
+                        "cantidad": 120.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Tostada Sanissimo",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Salmas",
+                        "cantidad": 24.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Ensalada de Nopales Bandera",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Nopales",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.67,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Jitomate",
+                        "cantidad": 50.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 5.0,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Panela",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "rebanada"
+                    },
+                    {
+                        "ingrediente": "Aguacate",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.33,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Cebolla",
+                        "cantidad": 10.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "cucharadas"
+                    },
+                    {
+                        "ingrediente": "Serrano",
+                        "cantidad": 5.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Cilantro",
+                        "cantidad": 5.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.1,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Desayuno",
+        "platillos": [
+            {
+                "nombre": "Jugo Verde",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Mandarina",
+                        "cantidad": 64.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Espinacas",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Nopales",
+                        "cantidad": 34.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Pepino",
+                        "cantidad": 26.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Agua",
+                        "cantidad": 100.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Torta de Bistec",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Bisteck",
+                        "cantidad": 90.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 3.0,
+                        "unidad_alternativa": "unidades"
+                    },
+                    {
+                        "ingrediente": "Pan",
+                        "cantidad": 60.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "pieza"
+                    },
+                    {
+                        "ingrediente": "Aguacate",
+                        "cantidad": 31.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.33,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Panela",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.67,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Cebolla",
+                        "cantidad": 10.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "cucharadas"
+                    },
+                    {
+                        "ingrediente": "Lechuga",
+                        "cantidad": 10.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.2,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Jitomate",
+                        "cantidad": 10.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "rebanada"
+                    },
+                    {
+                        "ingrediente": "Aceite",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharadita"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Mango",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Mango",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.67,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Comida",
+        "platillos": [
+            {
+                "nombre": "Aguachile",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Camarón",
+                        "cantidad": 35.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 5.0,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Pepino",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Serrano",
+                        "cantidad": 50.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Cilantro",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.33,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Cebolla",
+                        "cantidad": 15.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Limón",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "pieza"
+                    },
+                    {
+                        "ingrediente": "Aguacate",
+                        "cantidad": 50.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Pescado",
+                        "cantidad": 160.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Salmas",
+                        "cantidad": 200.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Ceviche de Atún",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Atún",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Pepino",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.67,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Mango",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.67,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Cebolla",
+                        "cantidad": 27.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Limón",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Cilantro",
+                        "cantidad": 3.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.1,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Salsa de soya",
+                        "cantidad": 13.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 2.67,
+                        "unidad_alternativa": "cucharaditas"
+                    },
+                    {
+                        "ingrediente": "Aguacate",
+                        "cantidad": 31.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.33,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Salmas",
+                        "cantidad": 200.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Palomitas de Maíz",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Palomitas",
+                        "cantidad": 18.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Aceite",
+                        "cantidad": 10.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "cucharaditas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Cena",
+        "platillos": [
+            {
+                "nombre": "Huevos Revueltos con Jamón y Queso",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Huevo",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Oaxaca",
+                        "cantidad": 40.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Jamón",
+                        "cantidad": 36.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Jitomate",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Pan",
+                        "cantidad": 54.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Pico de Gallo",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Jitomate",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 3.0,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Cebolla",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 4.0,
+                        "unidad_alternativa": "cucharadas"
+                    },
+                    {
+                        "ingrediente": "Serrano",
+                        "cantidad": 10.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Cilantro",
+                        "cantidad": 10.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.2,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Desayuno",
+        "platillos": [
+            {
+                "nombre": "Licuado Verde",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Apio",
+                        "cantidad": 14.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Espinacas",
+                        "cantidad": 12.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Pepino",
+                        "cantidad": 26.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Papaya",
+                        "cantidad": 38.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Piña",
+                        "cantidad": 57.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Agua",
+                        "cantidad": 250.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Linaza",
+                        "cantidad": 5.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharaditas"
+                    },
+                    {
+                        "ingrediente": "Jengibre",
+                        "cantidad": 5.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Huevo Revuelto con Tomate y Cebolla",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Huevo",
+                        "cantidad": 50.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "pieza"
+                    },
+                    {
+                        "ingrediente": "Jitomate",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 3.0,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Aceite",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharadita"
+                    },
+                    {
+                        "ingrediente": "Cebolla",
+                        "cantidad": 15.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 3.0,
+                        "unidad_alternativa": "cucharadas"
+                    },
+                    {
+                        "ingrediente": "Claras",
+                        "cantidad": 132.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 4.0,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Salmas",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Salmas",
+                        "cantidad": 100.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Té Verde",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Agua",
+                        "cantidad": 220.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Cacahuates",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Cacahuates",
+                        "cantidad": 12.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 12.0,
+                        "unidad_alternativa": "piezas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Naranja",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Naranja",
+                        "cantidad": 120.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "pieza"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Comida",
+        "platillos": [
+            {
+                "nombre": "Pollo con Papas al Horno",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Papa",
+                        "cantidad": 280.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 2.0,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Pollo",
+                        "cantidad": 210.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Ensalada California con Pollo",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Jitomate",
+                        "cantidad": 50.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 5.0,
+                        "unidad_alternativa": "rebanadas"
+                    },
+                    {
+                        "ingrediente": "Lechuga",
+                        "cantidad": 45.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Col",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Zanahoria",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Aderezo",
+                        "cantidad": 5.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharaditas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Snack",
+        "platillos": [
+            {
+                "nombre": "Té Verde",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Agua",
+                        "cantidad": 220.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Jícama",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Jícama",
+                        "cantidad": 80.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "tazas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "categoria": "Cena",
+        "platillos": [
+            {
+                "nombre": "Té de Manzanilla",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Agua",
+                        "cantidad": 220.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    }
+                ]
+            },
+            {
+                "nombre": "Sándwich de Atún",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Atún",
+                        "cantidad": 90.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "latas"
+                    },
+                    {
+                        "ingrediente": "Pan",
+                        "cantidad": 68.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": null,
+                        "unidad_alternativa": null
+                    },
+                    {
+                        "ingrediente": "Aguacate",
+                        "cantidad": 30.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.33,
+                        "unidad_alternativa": "piezas"
+                    },
+                    {
+                        "ingrediente": "Lechuga",
+                        "cantidad": 10.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Mayonesa",
+                        "cantidad": 6.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharaditas"
+                    }
+                ]
+            },
+            {
+                "nombre": "Licuado de Avena con Papaya",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Leche",
+                        "cantidad": 240.0,
+                        "unidad": "ml",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Papaya",
+                        "cantidad": 75.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.5,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Avena",
+                        "cantidad": 20.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 0.25,
+                        "unidad_alternativa": "tazas"
+                    },
+                    {
+                        "ingrediente": "Miel",
+                        "cantidad": 7.0,
+                        "unidad": "g",
+                        "cantidad_alternativa": 1.0,
+                        "unidad_alternativa": "cucharaditas"
+                    }
+                ]
+            }
+        ]
+    }
+]; // Asegúrate de que 'menuData' contenga la estructura de datos correspondiente
+
+let seleccion = {};
+let diasPorMenu = {};
+let menusSeleccionados = 0;
+let categoriaActual = "Desayuno";
+let categorias = ["Desayuno", "Snack", "Comida", "Snack", "Cena"];
+let indiceCategoriaActual = 0;
+
+function normalizarIngrediente(ingrediente) {
+    return ingrediente
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/s$/, '') // Elimina la 's' al final para normalizar plurales
+        .replace(/^\w/, (c) => c.toUpperCase()); // Capitaliza la primera letra
+}
+
+function displayDropdownCategorias() {
+    const container = document.getElementById('menu-container');
+    container.innerHTML = `<h2>Elige tu opción de ${categoriaActual}</h2>`;
+    
+    const dropdown = document.createElement('select');
+    dropdown.id = 'categoria-select';
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Selecciona una opción';
+    dropdown.appendChild(defaultOption);
+
+    const opcionesCategoria = menuData.filter(item => item.categoria === categoriaActual);
+    opcionesCategoria.forEach((opcion, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.text = `Opción ${index + 1}: ${opcion.platillos.map(p => p.nombre).join(', ')}`;
+        dropdown.appendChild(option);
+    });
+
+    const botonAceptar = document.createElement('button');
+    botonAceptar.innerText = 'Aceptar';
+    botonAceptar.onclick = confirmarSeleccion;
+
+    container.appendChild(dropdown);
+    container.appendChild(botonAceptar);
+}
+
+function confirmarSeleccion() {
+    const selectElement = document.getElementById('categoria-select');
+    const selectedIndex = selectElement.value;
+    
+    if (selectedIndex !== '') {
+        if (!seleccion[menusSeleccionados]) {
+            seleccion[menusSeleccionados] = {};
+            diasPorMenu[menusSeleccionados] = 0;
+        }
+        
+        let claveSeleccion = categoriaActual;
+        if (categoriaActual === "Snack") {
+            claveSeleccion += indiceCategoriaActual === 1 ? "1" : "2";
+        }
+
+        seleccion[menusSeleccionados][claveSeleccion] = menuData.filter(item => item.categoria === categoriaActual)[selectedIndex];
+
+        indiceCategoriaActual++;
+        if (indiceCategoriaActual < categorias.length) {
+            categoriaActual = categorias[indiceCategoriaActual];
+            displayDropdownCategorias();
+        } else {
+            displayDiasRestantes();
+        }
+    } else {
+        alert('Por favor, selecciona una opción.');
+    }
+}
+
+function displayDiasRestantes() {
+    const container = document.getElementById('menu-container');
+    container.innerHTML = `<h2>¿Para cuántos días es este menú?</h2>`;
+    
+    const dropdown = document.createElement('select');
+    dropdown.id = 'dias-select';
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Selecciona una opción';
+    dropdown.appendChild(defaultOption);
+
+    const diasRestantes = 7 - Object.values(diasPorMenu).reduce((acc, val) => acc + val, 0);
+    for (let i = 1; i <= diasRestantes; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.text = `${i} día(s)`;
+        dropdown.appendChild(option);
+    }
+
+    const botonAceptar = document.createElement('button');
+    botonAceptar.innerText = 'Aceptar';
+    botonAceptar.onclick = () => {
+        const seleccionDias = parseInt(document.getElementById('dias-select').value);
+        if (seleccionDias) {
+            diasPorMenu[menusSeleccionados] = seleccionDias;
+            menusSeleccionados++;
+            if (Object.values(diasPorMenu).reduce((acc, val) => acc + val, 0) < 7) {
+                resetearSeleccion();
+                displayDropdownCategorias();
+            } else {
+                generarResumenYListaDeCompras();
+            }
+        } else {
+            alert('Por favor, selecciona una opción.');
+        }
+    };
+
+    container.appendChild(dropdown);
+    container.appendChild(botonAceptar);
+}
+
+function resetearSeleccion() {
+    categoriaActual = "Desayuno";
+    indiceCategoriaActual = 0;
+}
+
+function generarResumenYListaDeCompras() {
+    let listaDeCompras = {};
+    let resumenMenu = '';
+
+    Object.keys(seleccion).forEach((menuId) => {
+        resumenMenu += `<div class="contenedor-resumen"><h2>Menú ${parseInt(menuId) + 1}</h2>`;
+        let contadorSnack = 1;
+        categorias.forEach((categoriaOriginal) => {
+            let categoria = categoriaOriginal;
+            if (categoria === "Snack") {
+                categoria += contadorSnack++;
+            }
+
+            if (seleccion[menuId][categoria] != null) {
+                resumenMenu += `<div class="tarjeta-categoria"><h3>${categoria}</h3>`;
+                seleccion[menuId][categoria].platillos.forEach((platillo) => {
+                    resumenMenu += `<div class="platillo"><strong>${platillo.nombre}</strong><ul>`;
+                    platillo.ingredientes.forEach(({ ingrediente, cantidad, unidad, cantidad_alternativa, unidad_alternativa }) => {
+                        const ingredienteNormalizado = normalizarIngrediente(ingrediente);
+                        if (!listaDeCompras[ingredienteNormalizado]) {
+                            listaDeCompras[ingredienteNormalizado] = { cantidad: 0, unidad };
+                        }
+                        listaDeCompras[ingredienteNormalizado].cantidad += cantidad * diasPorMenu[menuId];
+
+                        let textoCantidad = `${cantidad} ${unidad}`;
+                        if (cantidad_alternativa && unidad_alternativa) {
+                            textoCantidad += ` (${cantidad_alternativa} ${unidad_alternativa})`;
+                        }
+
+                        resumenMenu += `<li>${ingrediente}: ${textoCantidad}</li>`;
+                    });
+                    resumenMenu += '</ul></div>';
+                    resumenMenu += '<div class="espacio-entre-platillos"></div>';
+                });
+                resumenMenu += '</div>';
+            }
+        });
+        resumenMenu += '</div>';
+    });
+
+    let listaDeComprasParaLaSemana = Object.entries(listaDeCompras).map(([ingrediente, { cantidad, unidad }]) => {
+        return `<li>${ingrediente}: ${Math.ceil(cantidad)} ${unidad}</li>`;
+    });
+
+    const container = document.getElementById('menu-container');
+    container.innerHTML = `${resumenMenu}<h2>Lista de la compra para la semana</h2><ul class="lista-de-compras">${listaDeComprasParaLaSemana.join('')}</ul>`;
+}
+
+displayDropdownCategorias();
+
+    </script>
+  </body>
+</html>
